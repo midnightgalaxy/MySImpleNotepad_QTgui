@@ -2,9 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QShortcut>
+#include <QCloseEvent>
 
 #include "opendialog.h"
 #include "saveasdialog.h"
+#include "closewarningdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,14 +30,22 @@ private slots:
     void slotUpdateUnsaved();
     void slotOpenDialog();
     void slotSaveAsDialog();
+    void slotCloseMainWindow();
+    void slotCloseCurrentFile();
+    void slotSetForceClose();
 
 private:
+    void closeEvent(QCloseEvent *event);
+
     Ui::MainWindow *ui;
     OpenDialog * openDialog;
     SaveAsDialog * saveAsDialog;
+    CloseWarningDialog * closeWarningDialog;
+    QShortcut * saveShortCut;
 
     std::string openLocation;
-    //bool unsaved;
+    bool forceClose;
+    bool unsaved;
 };
 
 #endif // MAINWINDOW_H

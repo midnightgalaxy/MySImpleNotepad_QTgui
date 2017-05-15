@@ -26,12 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     opendialog.cpp \
-    saveasdialog.cpp
+    saveasdialog.cpp \
+    closewarningdialog.cpp
 
 HEADERS  += mainwindow.h \
     opendialog.h \
-    saveasdialog.h
+    saveasdialog.h \
+    closewarningdialog.h
 
 FORMS    += mainwindow.ui \
     opendialog.ui \
-    saveasdialog.ui
+    saveasdialog.ui \
+    closewarningdialog.ui

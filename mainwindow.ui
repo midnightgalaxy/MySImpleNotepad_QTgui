@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>535</width>
-    <height>402</height>
+    <width>826</width>
+    <height>528</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,9 +19,14 @@
      <rect>
       <x>60</x>
       <y>50</y>
-      <width>421</width>
-      <height>231</height>
+      <width>691</width>
+      <height>341</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 87, 83);
+color: rgb(211, 215, 207);
+font: 14pt &quot;DejaVu Sans&quot;;</string>
     </property>
    </widget>
   </widget>
@@ -30,7 +35,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>535</width>
+     <width>826</width>
      <height>19</height>
     </rect>
    </property>
@@ -43,6 +48,7 @@
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_as"/>
+    <addaction name="actionClose_current_file"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -64,6 +70,10 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="actionSave_as"/>
+   <addaction name="actionClose_current_file"/>
   </widget>
   <action name="actionQuit">
    <property name="text">
@@ -80,11 +90,6 @@
     <string>Open</string>
    </property>
   </action>
-  <action name="actionSace">
-   <property name="text">
-    <string>Save</string>
-   </property>
-  </action>
   <action name="actionSave_as">
    <property name="text">
     <string>Save as</string>
@@ -92,7 +97,12 @@
   </action>
   <action name="actionSave">
    <property name="text">
-    <string>Save</string>
+    <string>Save (CTRL+S)</string>
+   </property>
+  </action>
+  <action name="actionClose_current_file">
+   <property name="text">
+    <string>Close current file</string>
    </property>
   </action>
  </widget>
@@ -103,7 +113,7 @@
    <sender>actionQuit</sender>
    <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
-   <slot>close()</slot>
+   <slot>slotCloseMainWindow()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -179,6 +189,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionClose_current_file</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slotCloseCurrentFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>267</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slotSave()</slot>
@@ -187,5 +213,8 @@
   <slot>slotImport()</slot>
   <slot>slotSaveAsDialog()</slot>
   <slot>slotExport()</slot>
+  <slot>slotCloseMainWindow()</slot>
+  <slot>slotCloseCurrentFile()</slot>
+  <slot>slotSetForceClose()</slot>
  </slots>
 </ui>
