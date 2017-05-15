@@ -80,7 +80,7 @@ void MainWindow::slotExport()
         return;
 
     std::ofstream output(openLocation.c_str());
-    output << ui->plainTextEdit->toPlainText().toStdString();
+    output << ui->plainTextEdit->toPlainText().toStdString().c_str();
 
     std::string title;
     title = "MySImpleNotepad :: ";
@@ -95,7 +95,7 @@ void MainWindow::slotSave()
 {
     if (openLocation.size() != 0) {
         std::ofstream output(openLocation);
-        output << ui->plainTextEdit->toPlainText().toStdString();
+        output << ui->plainTextEdit->toPlainText().toStdString().c_str();
         output.close();
         std::string title;
         title = "MySImpleNotepad :: ";
