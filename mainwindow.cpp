@@ -160,6 +160,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
     if (unsaved) {
         event->ignore();
         closeWarningDialog->show();
+    } else {
+        event->accept();
     }
 }
 
